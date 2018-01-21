@@ -3,5 +3,5 @@ Simple and lightweight **zookeeper** docker image for use within **Kafka** clust
 How to use:
 
 ```
-docker run --rm -p 2182:2182 -e PORT=2182 igrytsyk/zookeeper
+docker run --rm -p 2182:2182 -e PORT=2182 igrytsyk/zookeeper-kafka_1.0.0
 ```
