@@ -2,8 +2,8 @@ FROM alpine
 
 MAINTAINER Igor Grytsyk "gritsyk@gmail.com"
 
-ENV JAVA_OPTS="-Xms1024M -Xmx2048M"
-ENV DATA_DIR=/tmp/zookeeper
+ENV JAVA_OPTS "-Xms1024M -Xmx2048M"
+ENV PORT 2181
 
 RUN apk add --no-cache \
         bash \
@@ -12,6 +12,8 @@ RUN apk add --no-cache \
 
 COPY kafka /kafka
 
-EXPOSE 2181
+EXPOSE $PORT
 
-ENTRYPOINT ["kafka/bin/zookeeper-server-start.sh", "kafka/config/zookeeper.properties"]
+ADD entrypoint.sh /
+
+ENTRYPOINT ["/entrypoint.sh"]
